@@ -10,11 +10,7 @@ public class 二维数组中的查找
     public static void main(String[] args)
     {
 
-        int[][] arr = { {1, 4, 7, 11, 15},
-                        {2, 5, 8, 12, 19},
-                        {3, 6, 9, 16, 22},
-                        {10, 13, 14, 17, 24},
-                        {18, 21, 23, 26, 30}};
+        int[][] arr = {{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
         int target = 12;
         boolean res = find(arr, target);
         System.out.println(res);
@@ -24,7 +20,7 @@ public class 二维数组中的查找
     //因此，从右上角开始查找，就可以根据 target 和当前元素的大小关系来缩小查找区间。
     private static boolean find(int[][] arr, int target)
     {
-        if(arr == null || arr.length <= 0 || arr[0].length <= 0)
+        if (arr == null || arr.length <= 0 || arr[0].length <= 0)
             return false;
 
         //核心
@@ -32,12 +28,12 @@ public class 二维数组中的查找
         int columns = arr[0].length;
 
         int r = 0;
-        int c = columns-1;
-        while(r< rows && c < columns)
+        int c = columns - 1;
+        while (r < rows && c < columns)
         {
-            if(target == arr[r][c])
+            if (target == arr[r][c])
                 return true;
-            else if(target < arr[r][c])
+            else if (target < arr[r][c])
                 c--;
             else
                 r++;

@@ -5,7 +5,7 @@ public class 数组中重复的数字
 
     public static void main(String[] args)
     {
-        int[] nums = {2, 3, 1 , 0, 5};
+        int[] nums = {2, 3, 1, 0, 5};
         //int[] dup = new int[nums.length];
         boolean res = fun(nums, nums.length);
         System.out.println(res);
