@@ -6,11 +6,13 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-//显式的Condition对象
+//显式的Condition对象 : 当使用显式的Lock和Condition时，也必须满足锁，条件谓词和条件变量之间的三元关系
+//内置的条件队列，Object中的wait、notify、notifyAll方法构成了内部条件队列的API 内置锁Synchronized
 public class Task
 {
     private final Lock lock = new ReentrantLock();
 
+    //两个条件谓词 非满 非空
     //add数据
     private final Condition addCondition = lock.newCondition();
 
@@ -21,11 +23,12 @@ public class Task
 
     private List<String> lists = new LinkedList<>();
 
-    public void add()
+    public void put()
     {
         lock.lock();
         try
         {
+            //阻塞直到非满
             //当集合已满,则"添加"线程等待
             while (lists.size() == 10)
             {
@@ -52,11 +55,12 @@ public class Task
         }
     }
 
-    public void sub()
+    public void take()
     {
         lock.lock();
         try
         {
+            //阻塞直到非空
             //当集合为空时,"减少"线程等待
             while (lists.size() == 0)
             {

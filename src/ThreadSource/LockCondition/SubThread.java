@@ -12,6 +12,6 @@ public class SubThread implements Runnable
     @Override
     public void run()
     {
-        task.sub();
+        task.take();
     }
 }

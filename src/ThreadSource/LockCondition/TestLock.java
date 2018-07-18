@@ -11,7 +11,7 @@ public class TestLock
             @Override
             public void run()
             {
-                task.add();
+                task.put();
             }
         });
         Thread t3 = new Thread(new AddThread(task));
