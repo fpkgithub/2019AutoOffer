@@ -20,7 +20,6 @@ public class ReentrantReadWriteLockTest
         this.map = map;
     }
 
-
     public Integer put(String key, Integer value)
     {
         w.lock();
@@ -45,6 +44,4 @@ public class ReentrantReadWriteLockTest
             r.unlock();
         }
     }
-
-
 }
