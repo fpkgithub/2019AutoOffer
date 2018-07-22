@@ -17,7 +17,7 @@ public class 表示数值的字符串
 
 
         //正则表达式
-        boolean res2 = isNumeric2(str.toCharArray());
+        boolean res2 = isNumeric2(str);
         System.out.println(res2);
     }
 
@@ -67,7 +67,7 @@ public class 表示数值的字符串
         return start < index;
     }
 
-    private static boolean isNumberic(String str)
+    private static boolean isNumeric2(String str)
     {
         if (str == null)
             return false;
