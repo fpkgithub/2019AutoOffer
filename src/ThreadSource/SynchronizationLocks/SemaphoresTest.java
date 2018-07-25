@@ -47,6 +47,6 @@ public class SemaphoresTest
         //十个线程,但是因为我们将信号量设置成了5.所以实际上,只有5个线程有机会来执行操作.
         //只有前五个线程,能够获得一个信号量,然后来执行暂停五分钟的操作.其他的线程,因为没有信号量可以获取了,就只能在控制台打印处** Could not acquire semaphore**.
         IntStream.range(0, 10).forEach(i -> executor.submit(longRunningTask));
-        stop(executor);
+        //stop(executor);
     }
 }
