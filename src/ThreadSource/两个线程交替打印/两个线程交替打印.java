@@ -1,4 +1,4 @@
-package ThreadSource;
+package ThreadSource.两个线程交替打印;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
