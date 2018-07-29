@@ -1,6 +1,8 @@
 package swordoffer.Thirdchapter;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -44,6 +46,30 @@ public class 从上往下打印二叉树
         System.out.println();
 
         levelIterator(root);
+
+        printTree(root);
+
+    }
+
+    private static ArrayList<Integer> printTree(ListNode32 root)
+    {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        Queue<ListNode32> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty())
+        {
+            int cnt = queue.size();
+            while (cnt-- > 0)
+            {
+                ListNode32 node = queue.poll();
+                if (node == null)
+                    continue;
+                res.add(node.val);
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }
+        }
+        return res;
     }
 
     private static void levelIterator(ListNode32 root)
@@ -52,10 +78,9 @@ public class 从上往下打印二叉树
             return;
         LinkedList<ListNode32> queue = new LinkedList<>();
         queue.offer(root);
-        ListNode32 node = null;
         while (!queue.isEmpty())
         {
-            node = queue.poll();
+            ListNode32 node = queue.poll();
             System.out.print(node.val + " ");
             if (node.left != null)
                 queue.offer(node.left);
