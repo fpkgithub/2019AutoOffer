@@ -1,4 +1,4 @@
-package swordoffer;
+package swordoffer.sort;
 
 public class HeapSortFinal
 {

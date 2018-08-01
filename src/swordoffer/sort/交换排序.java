@@ -1,4 +1,4 @@
-package swordoffer;
+package swordoffer.sort;
 
 public class 交换排序
 {
@@ -46,20 +46,20 @@ public class 交换排序
             swap(arr, left, mid);
         if (arr[left] > arr[right])
             swap(arr, left, right);
-        int base = arr[mid];
+        int baseNum = arr[mid];
         while (left < right)
         {
-            while (left < right && arr[right] > base)
+            while (left < right && arr[right] > baseNum)
             {
                 right--;
             }
-            while (left < right && arr[left] < base)
+            while (left < right && arr[left] < baseNum)
             {
                 left++;
             }
             swap(arr, right, left);
         }
-        arr[left] = base;
+        arr[left] = baseNum;
         return left;
     }
 

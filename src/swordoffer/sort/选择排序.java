@@ -1,4 +1,4 @@
-package swordoffer;
+package swordoffer.sort;
 
 //堆:http://blog.51cto.com/shangdc/2073589
 //TopK问题是指从大量数据（源数据）中获取最大（或最小）的K个数据。
