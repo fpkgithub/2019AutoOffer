@@ -1,4 +1,3 @@
-
 public class Main
 {
 
@@ -14,6 +13,14 @@ public class Main
         {
             System.out.println("Yes");
         }
+        System.out.println(a);
+        fun();
+    }
 
+    private static final int a = 1;
+
+    private static final void fun()
+    {
+        System.out.println("123");
     }
 }
