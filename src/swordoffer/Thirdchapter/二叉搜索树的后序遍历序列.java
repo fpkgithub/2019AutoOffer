@@ -4,17 +4,15 @@ package swordoffer.Thirdchapter;
  * 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。假设输入的数组的任意两个数字都互不相同。
  * 例如，下图是后序遍历序列 3,1,2 所对应的二叉搜索树。
  */
-public class 二叉搜索树的后序遍历序列
-{
-    public static void main(String[] args)
-    {
+public class 二叉搜索树的后序遍历序列 {
+    public static void main(String[] args) {
         int[] sequence = {1, 2, 3};
+        //int[] sequence = {7, 4, 6, 5};
         boolean res = VerifySquenceOfBST(sequence);
         System.out.println(res);
     }
 
-    private static boolean VerifySquenceOfBST(int[] sequence)
-    {
+    private static boolean VerifySquenceOfBST(int[] sequence) {
         if (sequence == null || sequence.length <= 0)
             return false;
         if (sequence.length == 1)
@@ -35,19 +33,16 @@ public class 二叉搜索树的后序遍历序列
    3. 我们已经知道i左侧所有元素均小于根结点，那么再依次遍历右侧，看是否所有元素均大于根结点；若出现小于根结点的元素，则直接返回false；若右侧全都大于根结点，则：
    4. 分别递归判断左/右子序列是否为后序序列；
    */
-    private static boolean verifySearchTree(int[] sequence, int first, int last)
-    {
+    private static boolean verifySearchTree(int[] sequence, int first, int last) {
         if (first >= last)
             return true;
         int root = sequence[last - 1];
         int i = first;
-        while (sequence[i] < root)
-        {
+        while (sequence[i] < root) {
             i++;
         }
         int j = i;
-        while (j < last)
-        {
+        while (j < last) {
             if (sequence[j] < root)
                 return false;
             j++;
