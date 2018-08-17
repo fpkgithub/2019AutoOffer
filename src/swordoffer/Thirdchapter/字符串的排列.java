@@ -10,7 +10,7 @@ import java.util.*;
 public class 字符串的排列 {
     public static void main(String[] args) {
 
-        String str = "abc";
+        String str = "zzaa";
         ArrayList<String> res = printPermutation(str);
         for (String s : res) {
             System.out.print(s + " ");

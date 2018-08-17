@@ -8,6 +8,7 @@ package swordoffer.fourchapter;
 public class 从1到n整数中1出现的次数 {
     public static void main(String[] args) {
 
+
         int num = 12;
         System.out.println(NumberOf1Between1AndN_Solution(num));
 
