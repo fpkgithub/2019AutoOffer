@@ -7,10 +7,8 @@ package swordoffer.secondchapter;
  * 从头结点开始它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个结点是
  * 值为4的结点。
  */
-public class 链表中倒数第K个结点
-{
-    public static void main(String[] args)
-    {
+public class 链表中倒数第K个结点 {
+    public static void main(String[] args) {
 
         int k = 3;
 
@@ -32,11 +30,22 @@ public class 链表中倒数第K个结点
         System.out.println(res.val);
     }
 
-    private static ListNode22 FindTheToTail(ListNode22 head, int k)
-    {
+    private static ListNode22 FindTheToTail(ListNode22 head, int k) {
         if (head == null || k <= 0)
             return null;
         ListNode22 cur = head;
+        while (cur != null && k-- > 0) {
+            cur = cur.next;
+        }
+        if (k > 0)
+            return null;
+        ListNode22 pre = head;
+        while (cur != null) {
+            cur = cur.next;
+            pre = pre.next;
+        }
+        return pre;
+        /*
         for (int i = 1; i < k; i++)
         {
             //注意是next
@@ -52,22 +61,20 @@ public class 链表中倒数第K个结点
 
         ListNode22 lastKNode = head;
         //先检查后下一步
-        while (cur.next != null)
-        {
+        while (cur.next != null) {
             cur = cur.next;
             lastKNode = lastKNode.next;
         }
-        return lastKNode;
+         return lastKNode;
+        */
     }
 }
 
-class ListNode22
-{
+class ListNode22 {
     int val;
     ListNode22 next;
 
-    public ListNode22(int val)
-    {
+    public ListNode22(int val) {
         this.val = val;
     }
 }
