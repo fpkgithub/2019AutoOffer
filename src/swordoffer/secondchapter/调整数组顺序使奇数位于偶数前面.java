@@ -55,6 +55,7 @@ public class 调整数组顺序使奇数位于偶数前面
         {
             for (int j = 0; j < arr.length - i - 1; j++)
             {
+                //偶奇交换
                 if (arr[j] % 2 == 0 && arr[j + 1] % 2 == 1)
                 {
                     int temp = arr[j];
