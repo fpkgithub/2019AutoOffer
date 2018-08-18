@@ -5,13 +5,11 @@ package swordoffer.firstchapter;
  * 题目：请实现一个函数，把字符串中的每个空格替换成"%20"。例如输入“We are happy.”，
  * 则输出“We%20are%20happy.”
  */
-public class 替换空格
-{
+public class 替换空格 {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         String str = "We are happy.";
-        String res = fun(str);
+        String res = replaceSpace(str);
         //StringBuffer str2 = new StringBuffer(str);
         //String res = replaceSpace(str2);
         System.out.println(res);
@@ -22,16 +20,14 @@ public class 替换空格
     //就需要令 P2 指向的位置依次填充 02%（注意是逆序的），否则就填充上 P1 指向字符的值。
     //从后向前遍是为了在改变 P2 所指向的内容时，不会影响到 P1 遍历原来字符串的内容。
     //复杂度：O(N) + O(1)
-    private static String fun(String str)
-    {
+    private static String fun(String str) {
         if (str == null)
             return str;
 
         // to builder
         StringBuffer str2 = new StringBuffer(str);
         int oldLen = str2.length();
-        for (int i = 0; i < oldLen; i++)
-        {
+        for (int i = 0; i < oldLen; i++) {
             if (str2.charAt(i) == ' ')
                 str2.append("  ");
         }
@@ -39,47 +35,43 @@ public class 替换空格
         int p1 = str.length() - 1;
         int p2 = str2.length() - 1;
 
-        while (p1 >= 0 && p2 > p1)
-        {
+        while (p1 >= 0 && p2 > p1) {
             char c = str.charAt(p1--);
-            if (c == ' ')
-            {
+            if (c == ' ') {
                 str2.setCharAt(p2--, '0');
                 str2.setCharAt(p2--, '2');
                 str2.setCharAt(p2--, '%');
             }
-            else
-            {
+            else {
                 str2.setCharAt(p2--, c);
             }
         }
         return str2.toString();
     }
 
-    public static String replaceSpace(StringBuffer str)
-    {
-        int oldLen = str.length();
-        for (int i = 0; i < oldLen; i++)
-        {
-            if (str.charAt(i) == ' ')
-                str.append("  ");
+    public static String replaceSpace(String str) {
+        char[] oldArr = str.toCharArray();
+        int countBlank = 0;
+        for (int i = 0; i < oldArr.length; i++) {
+            if (oldArr[i] == ' ')
+                countBlank++;
         }
 
-        int P1 = oldLen - 1, P2 = str.length() - 1;
-        while (P1 >= 0 && P2 > P1)
-        {
-            char c = str.charAt(P1--);
-            if (c == ' ')
-            {
-                str.setCharAt(P2--, '0');
-                str.setCharAt(P2--, '2');
-                str.setCharAt(P2--, '%');
+        char[] newArr = new char[oldArr.length + countBlank * 2];
+        int newLen = newArr.length - 1;
+        for (int i = oldArr.length - 1; i >= 0 && newLen >= 0; i--) {
+            if (oldArr[i] == ' ') {
+                newArr[newLen--] = '0';
+                newArr[newLen--] = '2';
+                newArr[newLen--] = '%';
             }
-            else
-            {
-                str.setCharAt(P2--, c);
+            else {
+                newArr[newLen] = oldArr[i];
+                newLen--;
             }
         }
-        return str.toString();
+
+
+        return new String(newArr);
     }
 }
