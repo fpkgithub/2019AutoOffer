@@ -1,5 +1,9 @@
 package swordoffer.Sixchapter;
 
+/**
+ * 54. 二叉查找树的第 K 个结点
+ * 利用二叉查找树中序遍历有序的特点。
+ */
 public class 二叉查找树的第K个结点 {
 
     private TreeNode ret;

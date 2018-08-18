@@ -2,6 +2,7 @@ package swordoffer.Sixchapter;
 
 import java.util.ArrayList;
 
+
 public class 和为S的两个数字 {
     public static void main(String[] args) {
         int[] nums = {1, 2, 4, 7, 11, 14};
