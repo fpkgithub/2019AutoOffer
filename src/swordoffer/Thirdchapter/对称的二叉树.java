@@ -4,13 +4,16 @@ package swordoffer.Thirdchapter;
  * 面试题28：对称的二叉树
  * 题目：请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和
  * 它的镜像一样，那么它是对称的。
+ * <p>
+ * 思路：首先根节点以及其左右子树，左子树的左子树和右子树的右子树相同
+ * 左子树的右子树和右子树的左子树相同即可，采用递归
+ * 非递归也可，采用栈或队列存取各级子树根节点
  */
-public class 对称的二叉树
-{
+
+public class 对称的二叉树 {
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         TreeNode28 root = new TreeNode28(8);
         TreeNode28 node1 = new TreeNode28(6);
@@ -34,8 +37,7 @@ public class 对称的二叉树
 
     //思路：
     //通过比较二叉树的前序遍历和对称前序遍历来判断二叉树是不是对称的
-    private static boolean isSymmetrical(TreeNode28 root)
-    {
+    private static boolean isSymmetrical(TreeNode28 root) {
 
         if (root == null)
             return true;
@@ -43,8 +45,7 @@ public class 对称的二叉树
 
     }
 
-    private static boolean isSymmetricalCore(TreeNode28 r1, TreeNode28 r2)
-    {
+    private static boolean isSymmetricalCore(TreeNode28 r1, TreeNode28 r2) {
         if (r1 == null && r2 == null)
             return true;
         if (r1 == null || r2 == null)
@@ -56,14 +57,12 @@ public class 对称的二叉树
 
 }
 
-class TreeNode28
-{
+class TreeNode28 {
     int val;
     TreeNode28 left;
     TreeNode28 right;
 
-    public TreeNode28(int val)
-    {
+    public TreeNode28(int val) {
         this.val = val;
     }
 }
