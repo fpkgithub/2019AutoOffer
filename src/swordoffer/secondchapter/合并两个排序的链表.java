@@ -9,10 +9,8 @@ package swordoffer.secondchapter;
  * 2： 2  4  6  8
  * 3： 1  2  3  4  5  6  7  8
  */
-public class 合并两个排序的链表
-{
-    public static void main(String[] args)
-    {
+public class 合并两个排序的链表 {
+    public static void main(String[] args) {
         ListNode25 head1 = new ListNode25(1);
         ListNode25 node2 = new ListNode25(3);
         ListNode25 node3 = new ListNode25(5);
@@ -35,12 +33,21 @@ public class 合并两个排序的链表
 
 
         //方法一
-        //ListNode25 res = mergerList(head1, head2);
-        /*while (res != null)
-        {
+        /*while (head1 != null) {
+            System.out.print(head1.val + " ");
+            head1 = head1.next;
+        }
+
+        while (head2 != null) {
+            System.out.print(head2.val + " ");
+            head2 = head2.next;
+        }*/
+
+        ListNode25 res = mergerList(head1, head2);
+        while (res != null) {
             System.out.print(res.val + " ");
             res = res.next;
-        }*/
+        }
 
 
         //方法二
@@ -53,70 +60,61 @@ public class 合并两个排序的链表
         }*/
 
         //递归
-        ListNode25 res3 = mergerList3(head1, head2);
+
+        /*ListNode25 res3 = mergerList3(head1, head2);
         while (res3 != null)
         {
             System.out.print(res3.val + " ");
             res3 = res3.next;
         }
-
+        */
     }
 
-    private static ListNode25 mergerList3(ListNode25 head1, ListNode25 head2)
-    {
+    private static ListNode25 mergerList3(ListNode25 head1, ListNode25 head2) {
         if (head1 == null)
             return head2;
         if (head2 == null)
             return head1;
 
-        if (head1.val <= head2.val)
-        {
+        if (head1.val <= head2.val) {
             head1.next = mergerList3(head1.next, head2);
             return head1;
         }
-        else
-        {
+        else {
             head2.next = mergerList3(head1, head2.next);
             return head2;
         }
     }
 
-    private static ListNode25 mergerList2(ListNode25 head1, ListNode25 head2)
-    {
+    private static ListNode25 mergerList2(ListNode25 head1, ListNode25 head2) {
         if (head1 == null)
             return head2;
         if (head2 == null)
             return head1;
         ListNode25 head = new ListNode25(-1);
         ListNode25 cur = head;
-        while (head1 != null && head2 != null)
-        {
-            if (head1.val <= head2.val)
-            {
+        while (head1 != null && head2 != null) {
+            if (head1.val <= head2.val) {
                 cur.next = head1;
                 head1 = head1.next;
             }
-            else
-            {
+            else {
                 cur.next = head2;
                 head2 = head2.next;
             }
             //注意别忘记next下移
             cur = cur.next;
         }
-        if (head1 != null)
-        {
+        if (head1 != null) {
             cur.next = head1;
         }
-        if (head2 != null)
-        {
+        if (head2 != null) {
             cur.next = head2;
         }
         return head.next;
     }
 
-    private static ListNode25 mergerList(ListNode25 head1, ListNode25 head2)
-    {
+    private static ListNode25 mergerList(ListNode25 head1, ListNode25 head2) {
         if (head1 == null)
             return head2;
         if (head2 == null)
@@ -125,11 +123,9 @@ public class 合并两个排序的链表
         ListNode25 cur1 = head1;
         ListNode25 cur2 = head2;
         ListNode25 head = cur1;
-        while (cur1 != null && cur2 != null)
-        {
+        while (cur1 != null && cur2 != null) {
 
-            if (cur1.val < cur2.val)
-            {
+            if (cur1.val < cur2.val) {
                 ListNode25 node1 = cur1.next;
                 ListNode25 node2 = cur2.next;
                 cur2.next = node1;
@@ -138,8 +134,7 @@ public class 合并两个排序的链表
                 cur1 = node1;
                 cur2 = node2;
             }
-            else
-            {
+            else {
                 cur1 = cur1.next;
                 cur2 = cur2.next;
             }
@@ -151,13 +146,11 @@ public class 合并两个排序的链表
     }
 }
 
-class ListNode25
-{
+class ListNode25 {
     int val;
     ListNode25 next;
 
-    public ListNode25(int val)
-    {
+    public ListNode25(int val) {
         this.val = val;
     }
 

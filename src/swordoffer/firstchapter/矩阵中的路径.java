@@ -11,10 +11,8 @@ package swordoffer.firstchapter;
  * C F C S
  * J D E H
  */
-public class 矩阵中的路径
-{
-    public static void main(String[] args)
-    {
+public class 矩阵中的路径 {
+    public static void main(String[] args) {
         //ABCE  //ABCCED
         //SFCS
         //ADEE
@@ -24,8 +22,7 @@ public class 矩阵中的路径
         //ABCE  //SEE
         //SFCS
         //ADEE
-        System.out.println(hasPath("ABCESFCSADEE".toCharArray(), 3, 4,
-                "SEE".toCharArray()) );// true
+        System.out.println(hasPath("ABCESFCSADEE".toCharArray(), 3, 4, "SEE".toCharArray()));// true
     }
 
     //a b t g
@@ -57,26 +54,22 @@ public class 矩阵中的路径
      * @param str    要搜素的字符串
      * @return 是否找到true是。false否
      */
-    public static boolean hasPath(char[] matrix, int rows, int cols, char[] str)
-    {
+    public static boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
         //参数校验
         if (matrix == null || matrix.length != rows * cols || str == null || str.length < 1)
             return false;
 
         //初始化变量
         boolean[] visited = new boolean[rows * cols];
-        for (int i = 0; i < visited.length; i++)
-        {
+        for (int i = 0; i < visited.length; i++) {
             visited[i] = false;
         }
 
         //记录结果的数组
-        int[] pathLength = {0};
+        int pathLength = 0;
         //以每个点为起始进行搜索
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 if (hashPathCore(matrix, rows, cols, str, visited, i, j, pathLength))
                     return true;
             }
@@ -97,36 +90,26 @@ public class 矩阵中的路径
      * @param pathLength 已经处理的str中字符个数
      * @return 是否找到
      */
-    private static boolean hashPathCore(char[] matrix, int rows, int cols, char[] str, boolean[] visited, int row, int col, int[] pathLength)
-    {
-        if (pathLength[0] == str.length)
+    private static boolean hashPathCore(char[] matrix, int rows, int cols, char[] str, boolean[] visited, int row, int col, int pathLength) {
+        if (pathLength == str.length)
             return true;
 
         boolean hasPath = false;
 
         //推断位置是否合法
-        if (row >= 0 && row < rows
-                && col >= 0 && col < cols
-                && matrix[row * cols + col] == str[pathLength[0]]
-                && !visited[row * cols + col])
-        {
+        if (row >= 0 && row < rows && col >= 0 && col < cols && matrix[row * cols + col] == str[pathLength] && !visited[row * cols + col]) {
             visited[row * cols + col] = true;
-            pathLength[0]++;
+            pathLength++;
 
             //按左上右下进行回溯
-            hasPath = hashPathCore(matrix, rows, cols, str, visited, row, col - 1, pathLength)
-                    || hashPathCore(matrix, rows, cols, str, visited, row - 1, col, pathLength)
-                    || hashPathCore(matrix, rows, cols, str, visited, row, col + 1, pathLength)
-                    || hashPathCore(matrix, rows, cols, str, visited, row + 1, col, pathLength);
+            hasPath = hashPathCore(matrix, rows, cols, str, visited, row, col - 1, pathLength) || hashPathCore(matrix, rows, cols, str, visited, row - 1, col, pathLength) || hashPathCore(matrix, rows, cols, str, visited, row, col + 1, pathLength) || hashPathCore(matrix, rows, cols, str, visited, row + 1, col, pathLength);
             //回溯
-            if (!hasPath)
-            {
-                pathLength[0]--;
+            if (!hasPath) {
+                pathLength--;
                 visited[row * cols + col] = false;
             }
         }
         return hasPath;
-
     }
 }
 
