@@ -25,9 +25,9 @@ public class 翻转单词顺序列 {
         int last = 0;
         int len = str.length();
         //反正单词
-        while (last <= len) {
+        while (last < len) {
             //last==len是为了处理最后一个字符的  = 也是为了处理最后一个字符
-            if (last == len || chars[last] == ' ') {
+            if (last == len - 1 || chars[last] == ' ') {
                 reverCore(chars, begin, last - 1);
                 begin = last + 1;
             }
