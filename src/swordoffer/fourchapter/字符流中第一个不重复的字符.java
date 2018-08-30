@@ -19,7 +19,7 @@ public class 字符流中第一个不重复的字符 {
     private static int FirstNotRepeatingChar2(String str) {
 
         char[] arr = str.toCharArray();
-        int[] arrCount = new int['z'];
+        int[] arrCount = new int['z' + 1];
 
         for (char c : arr) {
             arrCount[c]++;
