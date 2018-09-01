@@ -1,4 +1,4 @@
-package bishiti360;
+package bishiti.bishiti360;
 
 import java.util.HashSet;
 import java.util.Scanner;

@@ -1,8 +1,6 @@
 package swordoffer.fourchapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * 面试题40：最小的k个数
@@ -13,7 +11,8 @@ public class 最小的K个数 {
     public static void main(String[] args) {
 
         int[] arr = {4, 5, 1, 6, 2, 7, 3, 8};
-        ArrayList<Integer> res = findLastK(arr, 4);
+        //ArrayList<Integer> res = findLastK(arr, 4);
+        ArrayList<Integer> res = GetLeastNumbers_Solution(arr, 4);
         for (Integer re : res) {
             System.out.print(re + " ");
         }
@@ -40,4 +39,36 @@ public class 最小的K个数 {
         return list;
 
     }
+
+    public static ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
+        ArrayList<Integer> list = new ArrayList<>();
+        int len = input.length;
+        if (input == null || input.length == 0 || len < k || k == 0) {
+            return list;
+        }
+
+        //使用优先队列建堆  大堆
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2.compareTo(o1);
+            }
+        });
+
+        for (int i = 0; i < len; i++) {
+            if (maxHeap.size() != k) {
+                maxHeap.offer(input[i]);
+            }
+            else if (maxHeap.peek() > input[i]) {
+                Integer temp = maxHeap.poll();
+                temp = null;
+                maxHeap.offer(input[i]);
+            }
+        }
+        for (Integer val : maxHeap) {
+            list.add(val);
+        }
+        return list;
+    }
+
 }
