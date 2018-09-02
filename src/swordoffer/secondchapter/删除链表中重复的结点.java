@@ -105,7 +105,6 @@ class ListNode2
 {
     int val;
     ListNode2 next;
-
     public ListNode2(int val)
     {
         this.val = val;
