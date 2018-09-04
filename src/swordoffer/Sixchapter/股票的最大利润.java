@@ -1,5 +1,7 @@
 package swordoffer.Sixchapter;
 
+import java.util.LinkedHashMap;
+
 /**
  * 面试题63：股票的最大利润
  * 题目：假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖交易该股
@@ -11,7 +13,6 @@ public class 股票的最大利润 {
     public static void main(String[] args) {
         int[] prices = {9, 11, 8, 5, 7, 12, 16, 14};
         System.out.println(getMaxProfit(prices));
-
 
     }
 
@@ -26,6 +27,7 @@ public class 股票的最大利润 {
             minPrice = Math.min(minPrice, prices[i]);
             maxProfit = Math.max(maxProfit, prices[i] - minPrice);
         }
+        System.out.println(minPrice);
         return maxProfit;
 
     }
