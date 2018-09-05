@@ -10,6 +10,7 @@ public class 翻转单词顺序列 {
 
     public static void main(String[] args) {
         String str = "I am a student.";
+        //String str = "student. a am I";
         System.out.println(reverseStr(str));
     }
 
@@ -27,13 +28,19 @@ public class 翻转单词顺序列 {
         //反正单词
         while (last < len) {
             //last==len是为了处理最后一个字符的  = 也是为了处理最后一个字符
-            if (last == len - 1 || chars[last] == ' ') {
+            if (chars[last] == ' ') {
                 reverCore(chars, begin, last - 1);
                 begin = last + 1;
             }
+           /*
+            if (last == len - 1) {
+
+            }
+            */
             last++;
         }
-
+        //反转最后一个单词
+        reverCore(chars, begin, last - 1);
         //反正整个句子
         reverCore(chars, 0, chars.length - 1);
         return new String(chars);

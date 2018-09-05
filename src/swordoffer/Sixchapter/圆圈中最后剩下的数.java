@@ -12,10 +12,11 @@ public class 圆圈中最后剩下的数 {
 
         int n = 5;
         int m = 3;
-        System.out.println(lastRemaining(n, m));
+        System.out.println(lastRemaining2(n, m));
 
     }
 
+    //约瑟夫环问题：递归和非递归问题
     private static int lastRemaining(int n, int m) {
         if (n == 0)
             return -1;
