@@ -2,72 +2,76 @@ package swordoffer.TreeNodeTest;
 
 import java.util.ArrayList;
 
+class TreeNode2 {
+    int val;
+    TreeNode2 left;
+    TreeNode2 right;
+    boolean isFirst;
+
+    public TreeNode2(int val) {
+        this.val = val;
+        isFirst = false;
+    }
+
+}
+
 public class 二叉树某一个值的路径 {
-
-    static ArrayList<TreeNode> list = new ArrayList<>();
-
-    public static boolean findPaht(TreeNode node, TreeNode target, ArrayList<TreeNode> list) {
-        if (node == target)
-            return true;
-        if (node.left != null) {
-            list.add(node.left);
-            if (findPaht(node.left, target, list))
-                return true;
-            list.remove(list.size() - 1);
-        }
-        if (node.right != null) {
-            list.add(node.right);
-            if (findPaht(node.left, target, list)) {
-                return true;
-            }
-            list.remove(list.size() - 1);
-        }
-        return false;
-    }
-
-    static ArrayList<TreeNode> list2 = new ArrayList<>();
-
-    public static ArrayList<TreeNode> findPaht2(TreeNode node, TreeNode target) {
-        if (node == null) {
-            return list2;
-        }
-        list2.add(node);
-        if (node == target) {
-            return list2;
-        }
-        findPaht2(node.left, target);
-        findPaht2(node.right, target);
-
-        list2.remove(list.size() - 1);
-        return list2;
-    }
-
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(5);
-        TreeNode node1 = new TreeNode(3);
-        TreeNode node2 = new TreeNode(8);
+        TreeNode2 root = new TreeNode2(5);
+        TreeNode2 node1 = new TreeNode2(3);
+        TreeNode2 node2 = new TreeNode2(8);
         root.left = node1;
         root.right = node2;
 
-        TreeNode node3 = new TreeNode(1);
-        TreeNode node4 = new TreeNode(4);
+        TreeNode2 node3 = new TreeNode2(1);
+        TreeNode2 node4 = new TreeNode2(4);
         node1.left = node3;
         node1.right = node4;
 
-        TreeNode node5 = new TreeNode(6);
-        TreeNode node6 = new TreeNode(9);
+        TreeNode2 node5 = new TreeNode2(6);
+        TreeNode2 node6 = new TreeNode2(9);
         node2.left = node5;
         node2.right = node6;
 
-        TreeNode node7 = new TreeNode(7);
-        TreeNode node8 = new TreeNode(10);
-        node5.right = node7;
-        node6.left = node8;
-        boolean falg = findPaht(root, node2, list);
+
+        ArrayList<TreeNode2> res = new ArrayList<>();
+        TreeNode2 target = new TreeNode2(6);
+
+        boolean falg = findPath(root, target, res);
+
         System.out.println(falg);
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + " ");
+        for (int i = 0; i < res.size(); i++) {
+            System.out.print(res.get(i).val + " ");
         }
     }
+
+    public static boolean findPath(TreeNode2 root, TreeNode2 target, ArrayList<TreeNode2> list) {
+
+        if (root == null || target == null) {
+            return false;
+        }
+
+        list.add(root);
+        if (root.val == target.val) {
+            return true;
+        }
+
+        if (root.left != null) {
+            if (findPath(root.left, target, list) == true) {
+                return true;
+            }
+        }
+
+        if (root.right != null) {
+            if (findPath(root.right, target, list) == true) {
+                return true;
+            }
+        }
+
+        list.remove(list.size() - 1);
+        return false;
+    }
+
+
 }

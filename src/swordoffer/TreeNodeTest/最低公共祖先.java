@@ -1,5 +1,6 @@
 package swordoffer.TreeNodeTest;
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
 
 public class 最低公共祖先 {
@@ -30,27 +31,21 @@ public class 最低公共祖先 {
         return lca;
     }
 
-    private boolean getPath(TreeNode root, TreeNode n, ArrayList<TreeNode> path) {
-
-        if (root == n) {
+    private boolean getPath(TreeNode root, TreeNode target, ArrayList<TreeNode> path) {
+        if (root == null || target == null) {
+            return false;
+        }
+        path.add(root);
+        if (root.val == target.val)
             return true;
-        }
-
-        if (root.left != null) {
-            path.add(root.left);
-            if (getPath(root.left, n, path)) {
+        if (root.left != null)
+            if (getPath(root.left, target, path) == true)
                 return true;
-            }
-            path.remove(path.size() - 1);
-        }
 
-        if (root.right != null) {
-            path.add(root.right);
-            if (getPath(root.right, n, path)) {
+        if (root.right != null)
+            if (getPath(root.right, target, path) == true)
                 return true;
-            }
-            path.remove(path.size() - 1);
-        }
+        path.remove(path.size() - 1);
         return false;
     }
 }
