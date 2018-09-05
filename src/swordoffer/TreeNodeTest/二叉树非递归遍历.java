@@ -39,7 +39,7 @@ public class 二叉树非递归遍历 {
 
         System.out.println();
 
-        postOrder2(root);
+        postOrder1(root);
 
 
     }
@@ -79,36 +79,6 @@ public class 二叉树非递归遍历 {
         }
     }
 
-
-    //后序遍历
-    public static void postOrder2(TreeNode root) {
-
-        if (root == null)
-            return;
-
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode curNode = root;
-        TreeNode tempNode = null;
-        while (curNode != null || !stack.isEmpty()) {
-            while (curNode != null) {
-                stack.push(curNode);
-                curNode = curNode.left;
-            }
-            if (!stack.isEmpty()) {
-                //获得栈顶元素
-                tempNode = stack.peek();
-                //从左子树返回,需要判断它的右子树是否已经访问了
-                if (tempNode.isFirst == false) { //右子树还未被访问
-                    tempNode.isFirst = true;
-                    curNode = tempNode.right;
-                }
-                else {//左右子树都已经访问了
-                    tempNode = stack.pop();
-                    System.out.print(tempNode.val + " ");
-                }
-            }
-        }
-    }
 
     //后序遍历
 

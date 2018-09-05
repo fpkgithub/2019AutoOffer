@@ -15,7 +15,7 @@ public class TopNOfHeap {
         System.out.println();
         ArrayList<Integer> res = GetLeastNumbers_Solution(arr, 2);
         for (Integer val : res) {
-            System.out.print(val + " ");
+            System.out.print(val + " ");// 6 7
         }
         System.out.println();
         printArr(arr);
@@ -25,7 +25,7 @@ public class TopNOfHeap {
 
         ArrayList<Integer> list = new ArrayList<>();
         int len = input.length;
-        if (input == null || len == 0 || len < k || k == 0) {
+        if (input == null || len == 0 || k == 0 || len < k) {
             return list;
         }
 
