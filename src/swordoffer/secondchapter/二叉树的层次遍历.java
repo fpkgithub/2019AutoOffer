@@ -1,14 +1,13 @@
 package swordoffer.secondchapter;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 根据层次遍历的顺序，每一层都是从左到右的遍历输出，借助于一个队列。
  */
-public class 二叉树的层次遍历
-{
-    public static void main(String[] args)
-    {
+public class 二叉树的层次遍历 {
+    public static void main(String[] args) {
         /**
          * 先将根节点入队，当前节点是队头节点，将其出队并访问，
          * 如果当前节点的左节点不为空将左节点入队，
@@ -45,8 +44,7 @@ public class 二叉树的层次遍历
 
     }
 
-    private static void printPre(ListNode77 root)
-    {
+    private static void printPre(ListNode77 root) {
         if (root == null)
             return;
         System.out.print(root.val + " ");
@@ -54,8 +52,7 @@ public class 二叉树的层次遍历
         printPre(root.right);
     }
 
-    private static void levelIterator(ListNode77 root)
-    {
+    private static void levelIterator(ListNode77 root) {
         if (root == null)
             return;
 
@@ -63,8 +60,7 @@ public class 二叉树的层次遍历
         //queue.add(root);
         queue.offer(root);
         ListNode77 cur = null;
-        while (!queue.isEmpty())
-        {
+        while (!queue.isEmpty()) {
             //cur = queue.remove();
             cur = queue.poll();
             System.out.print(cur.val + " ");
@@ -79,14 +75,12 @@ public class 二叉树的层次遍历
     }
 }
 
-class ListNode77
-{
+class ListNode77 {
     int val;
     ListNode77 left;
     ListNode77 right;
 
-    public ListNode77(int val)
-    {
+    public ListNode77(int val) {
         this.val = val;
     }
 }
