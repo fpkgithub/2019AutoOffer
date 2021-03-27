@@ -1,6 +1,9 @@
 package swordoffer.Hash;
 
 
+/**
+ * https://www.jianshu.com/p/b638f19aeb64
+ */
 public class HashApp {
 
     public DataItem[] arr;// 哈希表的底层是由数组实现的

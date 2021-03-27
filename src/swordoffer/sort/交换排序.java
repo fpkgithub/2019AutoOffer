@@ -5,7 +5,7 @@ public class 交换排序 {
 
         //int[] arr = {3, 1, 4, 7, 5, 6, 2};
 
-        int[] arr = {1, 7, 2, 2, 2, 3, 4};
+        int[] arr = {4,1,6,5,2,3,10};
         printArr(arr);
         // 基于交换排序
         //System.out.println("\n基于交换排序");
@@ -91,19 +91,19 @@ public class 交换排序 {
     private static int getBaseIndex(int[] arr, int left, int right) {
         int base = arr[left];
         while (left < right) {
-            while (left < right && arr[right] > base) {
+            while ( left < right && arr[right] > base) {
                 right--;
             }
             if (left < right)
                 arr[left++] = arr[right];
-            while (left < right && arr[left] < base) {
+            while ( left < right && arr[left] < base) {
                 left++;
             }
             if (left < right)
                 arr[right--] = arr[left];
-
         }
         arr[left] = base;
+        System.out.print(left + ":");
         return left;
     }
 
@@ -164,6 +164,7 @@ public class 交换排序 {
 
 
     private static void printArr(int[] arr) {
+        System.out.println();
         for (int val : arr) {
             System.out.print(val + " ");
         }
